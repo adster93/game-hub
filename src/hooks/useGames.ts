@@ -6,11 +6,17 @@ export interface Game {
     id: number;
     name: string;
     screenshots?: Screenshot[];
+    platforms?: Platform[];
 }
 
 interface Screenshot {
     image_id: string;
     url: string;
+}
+
+export interface Platform {
+    id: number
+    name: string
 }
 
 // interface FetchGamesResponse {
