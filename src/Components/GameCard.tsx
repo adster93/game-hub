@@ -9,7 +9,7 @@ interface Props {
   game: Game;
 }
 
-function checkImage(game: Game) {
+export function checkImage(game: Game) {
   if (game.screenshots) {
     return (
       "https://images.igdb.com/igdb/image/upload/t_1080p/" +
