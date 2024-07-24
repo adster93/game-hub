@@ -7,6 +7,7 @@ export interface Game {
     name: string;
     screenshots?: Screenshot[];
     platforms?: Platform[];
+    aggregated_rating: number|string;
 }
 
 interface Screenshot {
