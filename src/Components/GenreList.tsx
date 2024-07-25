@@ -52,9 +52,10 @@ const genreMap: { [key: string]: string } = {
 
 interface Props {
     onSelecteGenre: (genre: Genre) => void;
+    selectedGenre: Genre | null;
 }
 
-const GenreList = ( {onSelecteGenre} : Props) => {
+const GenreList = ( {selectedGenre, onSelecteGenre} : Props) => {
   const { data, isLoading, error} = useGenres();
 
   if (error) return null;
@@ -70,7 +71,7 @@ const GenreList = ( {onSelecteGenre} : Props) => {
                 borderRadius={8}
                 src={genreMap[genre.name]}
               />
-              <Button onClick={()=>onSelecteGenre(genre)} fontSize='lg' variant='link'>{genre.name}</Button>
+              <Button fontWeight={genre.id == selectedGenre?.id ? 'bold' : 'normal'} onClick={()=>onSelecteGenre(genre)} fontSize='lg' variant='link'>{genre.name}</Button>
             </HStack>
           </ListItem>
         ))}
