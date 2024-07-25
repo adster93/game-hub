@@ -1,6 +1,5 @@
-import { HStack, Image, List, ListItem, Spinner, Text } from "@chakra-ui/react";
-import useGenres from "../hooks/useGenres";
-import { checkImage } from "./GameCard";
+import { Button, HStack, Image, List, ListItem, Spinner, Text } from "@chakra-ui/react";
+import useGenres, { Genre } from "../hooks/useGenres";
 import Adventure from "../assets/Adventure.png";
 import Arcade from "../assets/Arcade.png";
 import CardGame from "../assets/CardGame.png";
@@ -51,7 +50,11 @@ const genreMap: { [key: string]: string } = {
   ["Visual Novel"]: VisualNovel,
 };
 
-const GenreList = () => {
+interface Props {
+    onSelecteGenre: (genre: Genre) => void;
+}
+
+const GenreList = ( {onSelecteGenre} : Props) => {
   const { data, isLoading, error} = useGenres();
 
   if (error) return null;
@@ -67,7 +70,7 @@ const GenreList = () => {
                 borderRadius={8}
                 src={genreMap[genre.name]}
               />
-              <Text fontSize="lg">{genre.name}</Text>
+              <Button onClick={()=>onSelecteGenre(genre)} fontSize='lg' variant='link'>{genre.name}</Button>
             </HStack>
           </ListItem>
         ))}
